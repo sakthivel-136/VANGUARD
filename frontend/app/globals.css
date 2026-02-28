@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------- */
+/* 🌐 ROOT DESIGN TOKENS (PROFESSIONAL PALETTE)       */
+/* -------------------------------------------------- */
+:root {
+  /* Backgrounds */
+  --background: #f8fafc;      /* slate-50 */
+  --surface: #ffffff;         /* card / surface */
+  --surface-muted: #f1f5f9;   /* slate-100 */
+
+  /* Text */
+  --foreground: #0f172a;      /* slate-900 */
+  --foreground-muted: #475569; /* slate-600 */
+
+  /* Borders & UI */
+  --border: #e2e8f0;          /* slate-200 */
+  --ring: #cbd5f5;            /* soft focus ring */
+
+  /* Accents (security/admin friendly) */
+  --primary: #2563eb;         /* blue-600 */
+  --primary-muted: #dbeafe;   /* blue-100 */
+
+  --success: #16a34a;         /* green-600 */
+  --warning: #d97706;         /* amber-600 */
+  --danger: #dc2626;          /* red-600 */
+}
+
+/* -------------------------------------------------- */
+/* 🧩 TAILWIND THEME MAPPING                          */
+/* -------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* -------------------------------------------------- */
+/* 🌍 GLOBAL BASE STYLES                              */
+/* -------------------------------------------------- */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-weight: 400;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* -------------------------------------------------- */
+/* ✨ CARD / HOVER INTERACTIONS                       */
+/* -------------------------------------------------- */
+
+.raise-hover {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.raise-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 24px rgba(15, 23, 42, 0.12); /* slate-900 based */
+}
+
+/* -------------------------------------------------- */
+/* 👤 AVATAR                                         */
+/* -------------------------------------------------- */
+
+.avatar-big {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 9999px;
+  object-fit: cover;
+}

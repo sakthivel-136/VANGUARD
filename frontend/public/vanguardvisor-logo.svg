@@ -1,0 +1,11 @@
+<!-- VanguardVisor Industrial Logo (Scalable Vector) -->  
+<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">  
+  <!-- Hex Shield -->  
+  <path d="M100,50 L150,25 L250,50 L250,150 L150,175 L100,150 Z" fill="#2A3B4D"/>  
+  <!-- "V" Visor Cutout + Fuel Droplet -->  
+  <path d="M150,50 L200,100 L150,150" stroke="#FF6B35" stroke-width="8" fill="none"/>  
+  <circle cx="175" cy="100" r="8" fill="#FF6B35" opacity="0.7"/>  
+  <!-- Text -->  
+  <text x="280" y="90" font-family="Bebas Neue" font-size="36" fill="#2A3B4D">VANGUARD</text>  
+  <text x="280" y="130" font-family="Bebas Neue" font-size="42" fill="#FF6B35">VISOR</text>  
+</svg>  
