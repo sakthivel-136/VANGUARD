@@ -58,11 +58,21 @@ const ReportTable: React.FC<ReportTableProps> = ({ logs, loading }) => {
   // ===============================
   const normalizeStatus = (
     status?: string | null,
-    scanTime?: string | null
+    scanTime?: string | null,
+    lat?: string,
+    lon?: string
   ): "SUCCESS" | "MISSED" | "PROGRESS" => {
 
     // If no time → PROGRESS
     if (!scanTime) return "PROGRESS";
+
+    // If lat/lon are present and non-zero → SUCCESS
+    const hasLocation =
+      lat && lon &&
+      parseFloat(lat) !== 0 &&
+      parseFloat(lon) !== 0;
+
+    if (hasLocation) return "SUCCESS";
 
     if (!status) return "PROGRESS";
 
@@ -232,7 +242,9 @@ const ReportTable: React.FC<ReportTableProps> = ({ logs, loading }) => {
 
       const finalStatus = normalizeStatus(
         row.status,
-        row.scan_time
+        row.scan_time,
+        row.lat,
+        row.lon
       );
 
 
@@ -356,10 +368,9 @@ const ReportTable: React.FC<ReportTableProps> = ({ logs, loading }) => {
                           key={String(col.key)}
                           onClick={() => handleSort(col.key)}
                           className={`px-6 py-3 text-left text-xs font-bold uppercase tracking-wider cursor-pointer select-none
-                            ${
-                              isActive
-                                ? "bg-blue-100 text-blue-700"
-                                : "text-slate-500 hover:bg-slate-100"
+                            ${isActive
+                              ? "bg-blue-100 text-blue-700"
+                              : "text-slate-500 hover:bg-slate-100"
                             }`}
                         >
 
