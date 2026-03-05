@@ -1,18 +1,16 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-// Routes that don't require authentication
-const publicRoutes = ['/login', '/_next', '/api', '/favicon.ico', '/public', '/icon.png']
+// Routes that require authentication
+const protectedRoutes = ['/dashboard']
 
 export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl
 
-    // Allow public routes and static assets to pass through
-    if (
-        publicRoutes.some(route => pathname.startsWith(route)) ||
-        pathname === '/' ||
-        pathname.includes('.')
-    ) {
+    // Only protect specific routes
+    const isProtected = protectedRoutes.some(route => pathname.startsWith(route))
+
+    if (!isProtected) {
         return NextResponse.next()
     }
 
@@ -26,13 +24,10 @@ export function proxy(request: NextRequest) {
         return NextResponse.redirect(url)
     }
 
-    // Allow the request to proceed if a token exists
     return NextResponse.next()
 }
 
-// Specify the paths the proxy should run on
+// Only run proxy on protected paths
 export const config = {
-    matcher: [
-        '/((?!api|_next/static|_next/image|favicon.ico).*)',
-    ],
+    matcher: ['/dashboard/:path*'],
 }
