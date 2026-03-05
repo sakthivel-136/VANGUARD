@@ -1,7 +1,7 @@
 
 "use client";
 import React, { useState, useEffect } from "react";
-import { getPatrolReportPDF, PatrolReportResponse } from "../api/report"; // create this API call
+import { getPatrolReport as getPatrolReportPDF, PatrolReportResponse } from "../../api/patrolApi";
 import PatrolReportPDF from "./PatrolReportPDF";
 
 interface ReportPDFUIProps {
@@ -46,7 +46,16 @@ const ReportPDFUI: React.FC<ReportPDFUIProps> = ({ factoryCode, reportDate }) =>
       {error && <p className="text-red-600">{error}</p>}
 
       {/* Render PDF generator once data is fetched */}
-      {reportData && <PatrolReportPDF reportData={reportData} factoryCode={factoryCode} />}
+      {reportData && (
+        <PatrolReportPDF
+          logs={[]}
+          factoryCode={factoryCode}
+          factoryName={reportData.factory_name || 'Unknown'}
+          factoryAddress={reportData.factory_address || ''}
+          reportDate={reportDate}
+          generatedBy={reportData.generated_by || 'System'}
+        />
+      )}
     </div>
   );
 };

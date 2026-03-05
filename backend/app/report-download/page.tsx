@@ -41,7 +41,7 @@ export default function ReportDownloadPage() {
   const [factoryCode, setFactoryCode] = useState("");
   const [reportDate, setReportDate] = useState(new Date().toISOString().slice(0, 10));
   const [report, setReport] = useState<PatrolReportItem[]>([]);
-  
+
   // UI State
   const [loading, setLoading] = useState(false);
   const [pdfLoading, setPdfLoading] = useState(false);
@@ -78,7 +78,7 @@ export default function ReportDownloadPage() {
   // ================= FETCH =================
   const fetchReport = async () => {
     if (!factoryCode) return;
-    
+
     setLoading(true);
     setError(null);
     setPdfTrigger(null); // Reset PDF trigger on new fetch
@@ -118,16 +118,16 @@ export default function ReportDownloadPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-700">
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
+
         {/* Header Section */}
         <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">Patrol Reports</h1>
             <p className="mt-2 text-slate-500">View logs and generate official patrol documentation.</p>
           </div>
-          
+
           <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-lg border border-slate-200 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
             <span className="text-sm font-medium text-slate-600">Admin: {adminName || "Loading..."}</span>
@@ -136,7 +136,7 @@ export default function ReportDownloadPage() {
 
         {/* Controls Card */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-6 transition-shadow hover:shadow-md">
-          
+
           {error && (
             <div className="mb-4 p-4 rounded-lg bg-red-50 border border-red-100 text-red-600 text-sm flex items-center">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -145,7 +145,7 @@ export default function ReportDownloadPage() {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
-            
+
             {/* Factory Input */}
             <div className="md:col-span-5 space-y-2">
               <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Factory Location</label>
@@ -165,7 +165,7 @@ export default function ReportDownloadPage() {
                   ))}
                 </select>
                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                   <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
               </div>
             </div>
@@ -211,13 +211,13 @@ export default function ReportDownloadPage() {
 
         {/* Table Container */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden min-h-[400px] flex flex-col">
-          
+
           {!loading && cleanLogs.length > 0 && (
             <div className="overflow-x-auto" ref={printRef}>
               <div className="border-b border-slate-100 px-6 py-4 bg-slate-50/50">
-                 <h3 className="font-semibold text-slate-800">Report Data</h3>
+                <h3 className="font-semibold text-slate-800">Report Data</h3>
               </div>
-              <ReportTable logs={cleanLogs} />
+              <ReportTable logs={cleanLogs} loading={false} />
             </div>
           )}
 
@@ -256,7 +256,7 @@ export default function ReportDownloadPage() {
             />
           </div>
         )}
-        
+
       </div>
     </div>
   );

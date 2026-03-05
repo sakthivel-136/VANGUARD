@@ -68,8 +68,8 @@ export interface Activity {
 
 export interface ActivityFilterValues {
   dateRange: string
-  activityType: ActivityType | 'All'
+  activityType: ActivityType | 'All' | 'all'
   guard: string
   route: string
-  severity: ActivitySeverity | 'All'
+  severity?: ActivitySeverity | 'All' | 'all'
 }

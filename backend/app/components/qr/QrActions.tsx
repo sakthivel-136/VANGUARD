@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { QRCode } from "@/app/dashboard/qr-crud/page";
+import { QRCode } from "@/app/components/qr/QrTable";
 import { MoreHorizontal, Eye, Edit, Power, Trash2 } from "lucide-react"; // Using Lucide for professional icons
 
 interface QrActionsProps {
@@ -35,14 +35,14 @@ export default function QrActions({
       {showActions && (
         <>
           {/* Backdrop (Click outside) */}
-          <div 
-            className="fixed inset-0 z-10" 
+          <div
+            className="fixed inset-0 z-10"
             onClick={() => setShowActions(false)}
           ></div>
 
           {/* Menu Card */}
           <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white border border-slate-200 shadow-xl shadow-slate-200/40 py-1.5 z-20 animate-in fade-in zoom-in-95 duration-200">
-            
+
             {/* View */}
             <button
               onClick={() => {

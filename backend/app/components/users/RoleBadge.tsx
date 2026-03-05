@@ -1,7 +1,7 @@
 'use client';
 
-export default function RoleBadge({ role }) {
-  const getBadgeClasses = (role) => {
+export default function RoleBadge({ role }: { role: string }) {
+  const getBadgeClasses = (role: string) => {
     switch (role) {
       case 'Admin':
         return 'bg-purple-100 text-purple-800';

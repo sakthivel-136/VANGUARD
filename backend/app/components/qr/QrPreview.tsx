@@ -1,7 +1,7 @@
 "use client";
 
 import { QRCodeSVG } from "qrcode.react";
-import { QRCode as QRDataType } from "@/app/dashboard/qr-crud/page";
+import { QRCode as QRDataType } from "@/app/components/qr/QrTable";
 import { Printer, X, Info } from "lucide-react";
 
 interface QrPreviewProps {

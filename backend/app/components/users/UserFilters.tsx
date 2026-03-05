@@ -1,7 +1,7 @@
 'use client';
 
-export default function UserFilters({ filters, onFilterChange, sites }) {
-  const handleChange = (e) => {
+export default function UserFilters({ filters, onFilterChange, sites }: { filters: any; onFilterChange: (filters: any) => void; sites: string[] }) {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     onFilterChange({
       ...filters,

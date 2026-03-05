@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { QRCode, Factory } from "@/app/dashboard/qr-crud/page";
+import { QRCode } from "@/app/components/qr/QrTable";
+import { Factory } from "@/app/api/qr.api";
 import { X, MapPin, Save, Loader2, Clock } from "lucide-react";
 
 interface QrFormProps {
@@ -14,7 +15,7 @@ interface QrFormProps {
 
 export default function QrForm({ qr, factories, isEditMode, onSave, onClose }: QrFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // Initialize form state
   const [formData, setFormData] = useState<QRCode>({
     qr_id: 0,
@@ -45,7 +46,7 @@ export default function QrForm({ qr, factories, isEditMode, onSave, onClose }: Q
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.qr_name || !formData.factory_code) {
       alert("Please fill in Name and Factory.");
       return;
@@ -61,13 +62,13 @@ export default function QrForm({ qr, factories, isEditMode, onSave, onClose }: Q
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div 
+      <div
         className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300"
         onClick={onClose}
       ></div>
 
       <div className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl shadow-blue-900/10 z-10 transform transition-all">
-        
+
         {/* Header */}
         <div className="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-white/95 backdrop-blur">
           <div>
@@ -85,7 +86,7 @@ export default function QrForm({ qr, factories, isEditMode, onSave, onClose }: Q
 
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-8 space-y-6">
-          
+
           {/* Factory Select */}
           <div className="space-y-2">
             <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Factory Location</label>
@@ -139,28 +140,28 @@ export default function QrForm({ qr, factories, isEditMode, onSave, onClose }: Q
 
           {/* Coordinates Grid */}
           <div className="space-y-2">
-             <div className="flex items-center gap-2 mb-2">
-               <MapPin className="w-4 h-4 text-blue-600" />
-               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">GPS Coordinates</label>
-             </div>
-             <div className="grid grid-cols-2 gap-4">
-               <input
-                 type="number" step="any"
-                 value={formData.lat}
-                 onChange={(e) => setFormData({ ...formData, lat: parseFloat(e.target.value) || 0 })}
-                 className="w-full bg-slate-50 border border-slate-200 text-slate-800 font-medium rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:bg-white hover:border-slate-300 transition-all"
-                 placeholder="Latitude"
-                 required
-               />
-               <input
-                 type="number" step="any"
-                 value={formData.lon}
-                 onChange={(e) => setFormData({ ...formData, lon: parseFloat(e.target.value) || 0 })}
-                 className="w-full bg-slate-50 border border-slate-200 text-slate-800 font-medium rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:bg-white hover:border-slate-300 transition-all"
-                 placeholder="Longitude"
-                 required
-               />
-             </div>
+            <div className="flex items-center gap-2 mb-2">
+              <MapPin className="w-4 h-4 text-blue-600" />
+              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">GPS Coordinates</label>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                type="number" step="any"
+                value={formData.lat}
+                onChange={(e) => setFormData({ ...formData, lat: parseFloat(e.target.value) || 0 })}
+                className="w-full bg-slate-50 border border-slate-200 text-slate-800 font-medium rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:bg-white hover:border-slate-300 transition-all"
+                placeholder="Latitude"
+                required
+              />
+              <input
+                type="number" step="any"
+                value={formData.lon}
+                onChange={(e) => setFormData({ ...formData, lon: parseFloat(e.target.value) || 0 })}
+                className="w-full bg-slate-50 border border-slate-200 text-slate-800 font-medium rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 hover:bg-white hover:border-slate-300 transition-all"
+                placeholder="Longitude"
+                required
+              />
+            </div>
           </div>
 
           {/* Status */}

@@ -1,10 +1,10 @@
 "use client";
 
-import { Factory } from "@/app/dashboard/qr-crud/page";
+import { Factory } from "@/app/api/qr.api";
 import { ChevronDown, Building2 } from "lucide-react"; // Professional icons
 
 interface QrFiltersProps {
-  value: string; 
+  value: string;
   onChange: (factoryCode: string) => void;
   factories: Factory[];
 }
@@ -12,7 +12,7 @@ interface QrFiltersProps {
 export default function QrFilters({ value, onChange, factories }: QrFiltersProps) {
   return (
     <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300 flex items-center gap-4">
-      
+
       {/* Label with Icon */}
       <div className="flex items-center gap-2">
         <Building2 className="w-5 h-5 text-blue-600" />
@@ -26,7 +26,7 @@ export default function QrFilters({ value, onChange, factories }: QrFiltersProps
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400 group-hover:text-blue-500 transition-colors duration-200">
           <ChevronDown className="w-4 h-4" />
         </div>
-        
+
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}

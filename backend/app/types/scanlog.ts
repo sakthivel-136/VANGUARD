@@ -11,5 +11,5 @@ export interface ScanLog {
 
   guard_name?: string;
 
-  status: "SUCCESS" | "MISSED";
+  status: "SUCCESS" | "MISSED" | "PENDING";
 }

@@ -75,7 +75,7 @@ export default function UserForm({
       return
     }
 
-    if (!user && !formData.security_password.trim()) {
+    if (!user && !(formData.security_password || '').trim()) {
       alert('Password required')
       return
     }
@@ -108,7 +108,7 @@ export default function UserForm({
 
       alert(
         err?.message ||
-          'Error saving security user. Check console.'
+        'Error saving security user. Check console.'
       )
     }
   }

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/package.json",
+      "use": "@vercel/next",
+      "config": { "installCommand": "npm install" }
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next",
+      "config": { "installCommand": "npm install" }
+    }
+  ]
+}

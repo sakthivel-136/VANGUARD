@@ -14,3 +14,7 @@ venv/
 .vscode/
 
 node_modules/
+.next/
+out/
+build/
+.env*

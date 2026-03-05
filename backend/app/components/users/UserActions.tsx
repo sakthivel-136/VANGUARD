@@ -1,6 +1,6 @@
 'use client';
 
-export default function UserActions({ user, onEdit, onToggleStatus }) {
+export default function UserActions({ user, onEdit, onToggleStatus }: { user: any; onEdit: (user: any) => void; onToggleStatus: (id: string) => void }) {
   const isAdmin = user.role === 'Admin';
 
   return (
@@ -14,11 +14,10 @@ export default function UserActions({ user, onEdit, onToggleStatus }) {
       {!isAdmin && (
         <button
           onClick={() => onToggleStatus(user.id)}
-          className={`${
-            user.status === 'Active'
+          className={`${user.status === 'Active'
               ? 'text-red-600 hover:text-red-900'
               : 'text-green-600 hover:text-green-900'
-          } focus:outline-none`}
+            } focus:outline-none`}
         >
           {user.status === 'Active' ? 'Disable' : 'Enable'}
         </button>

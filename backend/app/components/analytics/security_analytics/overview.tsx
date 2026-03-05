@@ -27,7 +27,7 @@ export default function SecurityAnalyticsOverview() {
 
   return (
     <div className="grid grid-cols-4 gap-4">
-      <Card title="Total Scans" value={data.total_scans} />
+      <Card title="Total Scans" value={data.total_expected_rounds} />
       <Card title="Active Guards" value={data.active_guards} />
       <Card title="Inactive Guards" value={data.inactive_guards} />
       <Card title="Missed Scans" value={data.missed_scans} />

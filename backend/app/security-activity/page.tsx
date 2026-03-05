@@ -62,6 +62,9 @@ export default function SecurityActivityPage() {
         missedScans={
           filteredActivities.filter(a => a.type === 'Missed Scan').length
         }
+        issuesReported={
+          filteredActivities.filter(a => a.type === 'Issue Reported').length
+        }
         emergencyAlerts={
           filteredActivities.filter(a => a.type === 'Emergency Alert').length
         }
